@@ -3,52 +3,60 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include <map>
 using namespace std;
 
+// 1. KUONGEZA TABIA MPYA ZA KIISLAMU
 enum DisciplineLevel {
     LOW = 25,
-    MEDIUM = 67,
-    HIGH = 87
+    MEDIUM = 50,
+    HIGH = 75,
+    EXCELLENT = 90
 };
 
+// 2. KUONGEZA MAUDHUI YA KIROHO
+struct SpiritualTraits {
+    int prayerConsistency;       // Mara za kuswali kwa siku
+    int quranReadingFrequency;   // Mara za kusoma Qur'an kwa wiki
+    bool givesCharity;           // Sadaka ya kila mwezi
+    string religiousKnowledge;   // "Beginner", "Intermediate", "Advanced"
+};
+
+// 3. KUONGEZA HISIA ZA KIJAMII
+struct EmotionalTraits {
+    int empathyLevel;
+    int patienceLevel;
+    bool controlsAnger;
+    string conflictResolution; // "Avoidant", "Diplomatic", "Confrontational"
+};
+
+// 4. STRUCT KUU ILIYOBORESWA
 struct Person {
     string name;
+    int age;
+    string occupation;
+    
+    // Tabia za kimwili
     DisciplineLevel exercises;
     DisciplineLevel swims;
     DisciplineLevel runs;
-    DisciplineLevel faithful;
-    DisciplineLevel sleepsEarly;
-    DisciplineLevel smokes;
+    
+    // Tabia za kiroho
+    SpiritualTraits faith;
+    
+    // Tabia za kijamii
+    EmotionalTraits emotions;
     DisciplineLevel socialLevel;
+    
+    // Tabia za maamuzi
     DisciplineLevel decisionSpeed;
+    string decisionStyle; // "Analytical", "Intuitive", "Impulsive"
 };
 
-// Function ya kuchambua tabia
-void analyzeBehavior(Person p);
+// 5. FUNCTIONS MPYA
+void generateReport(Person p);
+void suggestImprovements(Person p);
+void compareWithIdeal(Person p);
 
 #endif
-
-#include "behavior_definitions.h"
-
-void analyzeBehavior(Person p) {
-    cout << "Tathmini ya tabia za " << p.name << ":" << endl;
-    cout << "- Exercises: " << p.exercises << "%\n";
-    cout << "- Swims: " << p.swims << "%\n";
-    cout << "- Runs: " << p.runs << "%\n";
-    cout << "- Faithful: " << p.faithful << "%\n";
-    cout << "- Sleeps Early: " << p.sleepsEarly << "%\n";
-    cout << "- Smokes: " << p.smokes << "%\n";
-    cout << "- Social Level: " << p.socialLevel << "%\n";
-    cout << "- Decision Speed: " << p.decisionSpeed << "%\n";
-}
-
-int main() {
-    Person haruna = { 
-        "Haruna Hussein", HIGH, MEDIUM, HIGH, HIGH, LOW, LOW, MEDIUM, HIGH 
-    };
-
-    analyzeBehavior(haruna);
-    
-    return 0;
-}
-
